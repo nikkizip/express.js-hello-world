@@ -11,6 +11,22 @@ spec:
     spec:     # pod spec                  
       containers: 
       - name: hello-world 
-        image:  # image we pushed in your contaieer registry
+        image: dockernikki/nodejs:latest
         ports:
         - containerPort: 3000
+        
+---
+# https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service  
+kind: Service 
+apiVersion: v1 
+metadata: 
+  name: nodejs-service 
+spec: 
+  selector: 
+    app: nodejs
+  ports: 
+  - protocol: TCP 
+    port: 3000
+    targetPort: 3000
+    nodePort: 31000 
+  type: NodePort 
