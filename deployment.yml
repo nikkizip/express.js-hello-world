@@ -1,16 +1,16 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: hello-world-deployment
+  name: nodejs-deployment
 spec:
   replicas: 2
   template:
     metadata:
       labels: # labels to select/identify the deployment
-        app: hello-world  
+        app: nodejs  
     spec:     # pod spec                  
       containers: 
-      - name: hello-world 
+      - name: nodejs 
         image: dockernikki/nodejs:latest
         ports:
         - containerPort: 3000
